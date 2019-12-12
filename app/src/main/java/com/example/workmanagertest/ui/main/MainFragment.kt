@@ -1,5 +1,6 @@
 package com.example.workmanagertest.ui.main
 
+
 import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,11 +9,12 @@ import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.Toast
 import com.example.workmanagertest.R
+import com.example.workmanagertest.ui.add.AddActivity
 import com.example.workmanagertest.ui.setting.SettingsActivity
-import kotlinx.android.synthetic.main.main_fragment.*
-
+import com.example.workmanagertest.ui.list.ListActivity
 class MainFragment : Fragment() {
-    lateinit var myButton:Button
+    lateinit var myButton: Button
+
     companion object {
         fun newInstance() = MainFragment()
     }
@@ -28,7 +30,7 @@ class MainFragment : Fragment() {
         myButton.setOnClickListener {
             onBtnClick()
         }
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(true)
 //        activity?.title= "ABC"
         return view
     }
@@ -56,20 +58,28 @@ class MainFragment : Fragment() {
                 settings()
                 true
             }
-            R.id.help -> {
-                showHelp()
+            R.id.add_letter_activity -> {
+                val intentAdd = Intent(context, AddActivity::class.java)
+                startActivity(intentAdd)
+                //showHelp()
+                true
+            }
+            R.id.list_letter_activity -> {
+                val intentList = Intent(context, ListActivity::class.java)
+                startActivity(intentList)
+                //showHelp()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    private fun settings(){
-        val intent = Intent(context,SettingsActivity::class.java)
+    private fun settings() {
+        val intent = Intent(context, SettingsActivity::class.java)
         startActivity(intent)
     }
 
-    private fun showHelp(){
-        Toast.makeText(context,"Help!",Toast.LENGTH_SHORT).show()
+    private fun showHelp() {
+        Toast.makeText(context, "Help!", Toast.LENGTH_SHORT).show()
     }
 }

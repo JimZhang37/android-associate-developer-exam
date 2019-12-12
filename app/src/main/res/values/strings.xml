@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">workManagerTest</string>
+    <string name="app_name">Google Android Associate Developer Test</string>
     <string name="mainfragment">MainFragment</string>
     <string name="title_activity_settings">Settings</string>
 
@@ -18,5 +18,6 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="setting">setting</string>
-    <string name="help">help</string>
+    <string name="add_letter_activity">Add Letter</string>
+    <string name="activity_label_list">List Letters</string>
 </resources>

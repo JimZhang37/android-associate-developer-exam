@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.Preference
 import androidx.preference.PreferenceManager
+import com.example.workmanagertest.data.LetterDatabase
+import com.example.workmanagertest.data.LetterRepository
 
 class MyApplication : Application(), SharedPreferences.OnSharedPreferenceChangeListener {
     override fun onCreate() {
@@ -40,4 +42,7 @@ class MyApplication : Application(), SharedPreferences.OnSharedPreferenceChangeL
             }
         )
     }
+
+    val repository: LetterRepository
+        get() = LetterRepository.create(LetterDatabase.create(this)!!)!!
 }
