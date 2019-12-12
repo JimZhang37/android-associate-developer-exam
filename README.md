@@ -24,4 +24,5 @@ Day 2
 * when pagedlist to fetch more data is a mystery, as viewmodel livedata is observed to change once. 
 * FAB
 * drawer navigation
+* the nightmode is default has a problem
 
