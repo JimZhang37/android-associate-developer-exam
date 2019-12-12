@@ -22,4 +22,6 @@ Day 2
 * beautified theme
 * up button and menu for list activity
 * when pagedlist to fetch more data is a mystery
+* FAB
+* drawer navigation
 
