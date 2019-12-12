@@ -10,16 +10,16 @@ class LetterRepository private constructor(private val letterDao: LetterDao) {
     companion object {
         private var repository: LetterRepository? = null
 
-        fun create(database: LetterDatabase):LetterRepository?{
-            if(repository != null){
+        fun create(database: LetterDatabase): LetterRepository? {
+            if (repository != null) {
                 return repository
-            }
-            else{
+            } else {
                 repository = LetterRepository(database.letterDao())
                 return repository
             }
         }
     }
+
     suspend fun insertLetters(vararg letters: Letter) {
         letters.forEach { letterDao.insertAll(it) }
     }
@@ -34,7 +34,7 @@ class LetterRepository private constructor(private val letterDao: LetterDao) {
             prefetchDistance = 2,
             enablePlaceholders = false,
             initialLoadSizeHint = 6,
-            maxSize = 24
+            maxSize = 10
         )
         return letterDao.getLetters().toLiveData(myPagingConfig)
     }

@@ -18,6 +18,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.list.ListActivity"
+            android:parentActivityName=".MainActivity"
             android:label="@string/activity_label_list"/>
         <activity
             android:name=".ui.setting.SettingsActivity"

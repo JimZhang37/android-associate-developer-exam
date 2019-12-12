@@ -31,7 +31,7 @@ class MyApplication : Application(), SharedPreferences.OnSharedPreferenceChangeL
     }
 
     private fun setTheme(sharedPreferences: SharedPreferences?) {
-        val name = sharedPreferences?.getString("theme", "MODE_NIGHT_YES")
+        val name = sharedPreferences?.getString("theme", "MODE_NIGHT_FOLLOW_SYSTEM")
         AppCompatDelegate.setDefaultNightMode(
             when (name) {
                 "MODE_NIGHT_NO" -> AppCompatDelegate.MODE_NIGHT_NO
