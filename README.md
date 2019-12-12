@@ -15,7 +15,7 @@ Day 2
 * list activity is added, with a recycler view to show pagedlist and an adapter is used to connect data and view
 * add activity, to add new letter
 * up button for list activity
-* the default theme in MyApplication is changed to match the default theme in Preference
+* the nightmode is default has a problem. the default theme in MyApplication is changed to match the default theme in Preference
 
 ## functions to be added
 * detailed page
@@ -24,5 +24,5 @@ Day 2
 * when pagedlist to fetch more data is a mystery, as viewmodel livedata is observed to change once. 
 * FAB
 * drawer navigation
-* the nightmode is default has a problem
+
 
