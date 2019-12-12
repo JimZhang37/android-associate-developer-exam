@@ -24,4 +24,5 @@ Day 2
 * when pagedlist to fetch more data is a mystery
 * FAB
 * drawer navigation
+* the nightmode is default has a problem
 
