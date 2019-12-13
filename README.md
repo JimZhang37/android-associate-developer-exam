@@ -17,12 +17,16 @@ Day 2
 * up button for list activity
 * the nightmode is default has a problem. the default theme in MyApplication is changed to match the default theme in Preference
 
+Day 3
+* Invalidate cash and restart
+* FAB in main page
+* define theme colors
+
 ## functions to be added
 * detailed page
 * beautified theme
 * menu for list activity
 * when pagedlist to fetch more data is a mystery, as viewmodel livedata is observed to change once. 
-* FAB
 * drawer navigation
 
 

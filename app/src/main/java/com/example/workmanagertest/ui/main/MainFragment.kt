@@ -8,13 +8,15 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import com.example.workmanagertest.R
+import com.example.workmanagertest.databinding.MainFragmentBinding
 import com.example.workmanagertest.ui.add.AddActivity
 import com.example.workmanagertest.ui.setting.SettingsActivity
 import com.example.workmanagertest.ui.list.ListActivity
 class MainFragment : Fragment() {
     lateinit var myButton: Button
-
+    lateinit var binding: MainFragmentBinding
     companion object {
         fun newInstance() = MainFragment()
     }
@@ -25,21 +27,32 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.main_fragment, container, false)
-        myButton = view.findViewById<Button>(R.id.button)
-        myButton.setOnClickListener {
+        binding = MainFragmentBinding.inflate(inflater)
+//        val view = inflater.inflate(R.layout.main_fragment, container, false)
+//        myButton = view.findViewById<Button>(R.id.button)
+        binding.button.setOnClickListener {
             onBtnClick()
         }
+
         setHasOptionsMenu(true)
 //        activity?.title= "ABC"
-        return view
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
-    }
+        binding.viewModel = viewModel
+        viewModel.navigateToSearch.observe(viewLifecycleOwner,
+            Observer<Boolean> { navigate ->
+                if(navigate) {
+//                    val navController = findNavController()
+//                    navController.navigate(R.id.action_homeFragment_to_gdgListFragment)
+                    openAddLetter()
+
+                }
+            })    }
 
     fun onBtnClick() {
         viewModel.notifyUser()
@@ -59,8 +72,7 @@ class MainFragment : Fragment() {
                 true
             }
             R.id.add_letter_activity -> {
-                val intentAdd = Intent(context, AddActivity::class.java)
-                startActivity(intentAdd)
+                viewModel.onFabClicked()
                 //showHelp()
                 true
             }
@@ -72,6 +84,12 @@ class MainFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun openAddLetter() {
+        val intentAdd = Intent(context, AddActivity::class.java)
+        startActivity(intentAdd)
+        viewModel.onNavigatedToSearch()
     }
 
     private fun settings() {

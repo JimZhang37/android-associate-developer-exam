@@ -2,6 +2,8 @@ package com.example.workmanagertest.ui.main
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
@@ -23,5 +25,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             .build()
 
         WorkManager.getInstance(getApplication()).enqueue(nortificationWorkRequest)
+    }
+
+    private val _navigateToSearch = MutableLiveData<Boolean>()
+    val navigateToSearch: LiveData<Boolean>
+        get() = _navigateToSearch
+
+    fun onFabClicked() {
+        _navigateToSearch.value = true
+    }
+
+    fun onNavigatedToSearch() {
+        _navigateToSearch.value = false
     }
 }
